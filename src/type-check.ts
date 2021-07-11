@@ -196,7 +196,7 @@ function warnMessageEventVisitorEnv(checker: ts.TypeChecker, rootNode: ts.Node) 
     if (!ts.isCallExpression(node)) {
       return undefined;
     }
-    if (!ts.isStringLiteral(node.arguments[0])) {
+    if (node.arguments.length === 0 || !ts.isStringLiteral(node.arguments[0])) {
       return
     }
     if (node.arguments[0].text === "message") {
@@ -231,7 +231,7 @@ function compile(filename: string, src: string, options: ts.CompilerOptions) {
 
     const sym = checker.getSymbolAtLocation(node);
 
-    if (sym?.declarations?.length === 1) {
+    if (sym?.declarations?.length === 1 || sym?.valueDeclaration) {
       return;
     }
 
