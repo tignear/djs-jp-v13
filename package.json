@@ -1,0 +1,38 @@
+{
+  "name": "djs-jp-v13",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@aspida/axios": "^1.7.1",
+    "@discordjs/voice": "^0.5.3",
+    "@progfay/scrapbox-parser": "^7.1.0",
+    "@tsconfig/node14": "^1.0.1",
+    "@types/json-schema": "^7.0.8",
+    "@types/node": "^15.12.3",
+    "axios": "^0.21.1",
+    "discord.js": "^13.0.0-dev.d6c43a5.1625875428",
+    "typescript": "^4.3.5"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.27.0",
+    "@typescript-eslint/parser": "^4.27.0",
+    "eslint": "^7.28.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.3.1"
+  },
+  "scripts": {
+    "build": "npm-run-all api:build ts:build",
+    "check-types": "tsc --noEmit",
+    "eslint": "eslint src/**/*.ts",
+    "eslint:fix": "eslint src/**/*.ts --fix",
+    "start": "node dist/index.js",
+    "format": "prettier --write src/**/*.ts",
+    "lint": "npm-run-all eslint check-types",
+    "lint:fix": "npm-run-all eslint:fix check-types format",
+    "api:build": "aspida",
+    "ts:build": "tsc"
+  }
+}
